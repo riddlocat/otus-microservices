@@ -9,10 +9,10 @@ COPY ["ContainerizedApplication.Api.csproj", "ContainerizedApplication.Api/"]
 RUN dotnet restore "ContainerizedApplication.Api/ContainerizedApplication.Api.csproj"
 WORKDIR "src/ContainerizedApplication.Api"
 COPY . .
-RUN dotnet build "ContainerizedApplication.Api.csproj" -c Development -o /app/build
+RUN dotnet build "ContainerizedApplication.Api.csproj" -c Production -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ContainerizedApplication.Api.csproj" -c Development -o /app/publish /p:UseAppHost=false --no-restore
+RUN dotnet publish "ContainerizedApplication.Api.csproj" -c Production -o /app/publish /p:UseAppHost=false --no-restore
 
 FROM base AS final
 WORKDIR /app
