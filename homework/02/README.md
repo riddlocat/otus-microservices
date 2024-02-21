@@ -7,7 +7,7 @@
 
 ### Сборка Docker-образа
 
-> 💡 Выполнение команды осуществляется из [директории](/ContainerizedApplication/src/ContainerizedApplication.Api/), включающей `Dockerfile`
+> 💡 Выполнение команды осуществляется из [директории](/ContainerizedApplication/src/ContainerizedApplication.Api), включающей `Dockerfile`
 
 ```dockerfile
 docker build -t otus_hw02:latest . --platform linux/amd64
