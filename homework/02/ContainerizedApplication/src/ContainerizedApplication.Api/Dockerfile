@@ -12,7 +12,7 @@ COPY . .
 RUN dotnet build "ContainerizedApplication.Api.csproj" -c Development -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ContainerizedApplication.Api.csproj" -c Development -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "ContainerizedApplication.Api.csproj" -c Development -o /app/publish /p:UseAppHost=false --no-restore
 
 FROM base AS final
 WORKDIR /app
