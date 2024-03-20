@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otus-hw03-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: otus-hw03-app
+  template:
+    metadata:
+      labels:
+        app: otus-hw03-app
+    spec:
+      containers:
+      - name: otus-hw03
+        image: riddlocat/otus_hw02:1.0
+        ports:
+          - name: web
+            containerPort: 8000
+        livenessProbe:
+          httpGet:
+            port: 8000
+            path: /health
+          initialDelaySeconds: 5
+          periodSeconds: 2
+          timeoutSeconds: 1
+        readinessProbe:
+          httpGet:
+            port: 8000
+            path: /health
+          initialDelaySeconds: 5
+          periodSeconds: 2
+          timeoutSeconds: 1
